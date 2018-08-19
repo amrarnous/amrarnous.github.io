@@ -1,0 +1,201 @@
+<html>
+    <head>
+        <title>Amr Arnous</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="app">
+            <div class="side-navbar text-center">
+                  <div class="logo">
+                      <h1 v-bind:title="myName.toUpperCase()">
+                          {{ myName.toUpperCase() }}
+                      </h1>
+                  </div>  
+
+                  <ul id="nav-list" class="unstyled-list">
+                      <li v-for="list in navbarList">
+                        <img v-bind:src="list.imgSrc" width="20" alt="">
+                        <a v-bind:href="list.link" v-scroll-to="list.link">
+                            {{ list.nav.toUpperCase() }}
+                        </a>
+                      </li>
+                  </ul>
+            </div>
+            <transition name="fade">
+                <div v-if="show" class="mobile-navbar">
+                    <div @click="show = !show" class="close-nav">
+                        <img src="imgs/close.svg" width="15" alt="">
+                    </div>
+                    <ul id="nav-list" class="unstyled-list">
+                      <li v-for="Molist in navbarList" @click="show = !show">
+                        <img v-bind:src="Molist.imgSrc" width="20" alt="">
+                        <a v-bind:href="Molist.link" v-scroll-to="Molist.link">
+                            {{ Molist.nav.toUpperCase() }}
+                        </a>
+                      </li>
+                  </ul>
+                </div>
+            </transition>
+            <header id="home">
+                <div class="top-part">
+                    <div class="left-side">
+                        <div class="social-media">
+                            <ul id="social-media-links" class="unstyled-list">
+                                <li v-for="socialMediaLink in socialMediaLinks">
+                                    <a v-bind:href="socialMediaLink.link" v-bind:title="socialMediaLink.name">
+                                        <img v-bind:src="socialMediaLink.imgSrc" v-bind:alt="socialMediaLink.name" width="18">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right-side">
+                        <div class="menu" v-on:click="show = !show">
+                            <a href="#">
+                                <img v-bind:src="menuIconSrc" width="25" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="welcome" v-bind:title="HelloThereTitle">
+                    <h3>
+                        Hello There!
+                    </h3>
+                    <h1>I'm Amr Arnous</h1>
+                </div>
+                <div class="scrollDown" v-scroll-to="navbarList[1].link">
+                    <img src="imgs/down-arrow.svg" width="25" alt="">
+                </div>
+            </header>
+            <section class="about-me" id="about">
+                <div class="section-name-side">
+                    <h1 class="section-name">ABOUT</h1>
+                </div>
+                <div class="content-side">
+                    <div class="avatar">
+                        <img src="imgs/avatar.jpg" width="70" alt="">
+                    </div>
+                <article>
+                    <b>I'm a Front-End Developer and UX Designer From syria live and work also study there 😎</b>
+                    <h1>Front-End Development</h1>
+                    <p>
+                        Starting with basic websites several years ago I found myself as a <b>Front-End Developer</b> for complex projects for <a href="https://www.directgroup.co">DirectGroup</a>  with big passion.
+                        visually appealing design, wireframing and coding become my daily companion 
+                    </p>
+                </article>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <section class="skills" id="skills">
+                <div class="section-name-side">
+                    <h1 class="section-name">SKILLS</h1>
+                </div>
+                <div class="content-side">
+                <ul>
+                    <li v-for="skill in skillsList">
+                        {{ skill.skillName }}
+                        
+                    </li>
+                </ul>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <section class="projects">
+                <div class="section-name-side" id="projects">
+                    <h1 class="section-name">LATEST PROJECT</h1>
+                    <div class="content-side">
+                        <a v-bind:href="projectInfo.projectURL" target="_blank">
+                            <div class="project-photo">
+                            <img v-bind:src="projectInfo.PhotoURL" class="img-fluid" alt="">
+                        </div>
+                        <div class="project-info">
+                            <h1>{{ projectInfo.name }}</h1>
+                            <p>
+                                    {{ projectInfo.info }}
+                            </p>
+                        </div>
+                        </a>
+                        <div class="redirect-behance">
+                            <p>
+                                Click Here To See Full Project On Behance
+                            </p>
+                        </div>
+                        <div class="go-behance">
+                            <a v-bind:href="socialMediaLinks[2].link" target="_blank">
+                                <img src="imgs/be.svg" width="50" alt="">
+                                <p>
+                                    SEE MY FULL PROJECTS ON BEHANCE
+                                    <img src="imgs/arrow-right.svg" width="20" alt="">
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="request-quote" id="requestQuote">
+                <div class="section-name-side">
+                    <h1 class="section-name">REQUEST A QUOTE</h1>
+                </div>
+                <div class="content-side">
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your First Name..">
+                        <input type="text" placeholder="Your Last Name..">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email..">
+                        <input type="text" placeholder="Your Phone Number..">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Tell me little about your project"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send Request">
+                    </div>
+                </form>
+                </div>
+                <div class="clear"></div>
+            </section>
+            <footer>
+                <h1>If you think good design is expensive, you should look at the cost of bad design. <br> <span>— Dr. Ralf Speth</span></h1>
+            </footer>
+        </div>
+        <div class="loader">
+            <div class="body">
+                <span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                </span>
+                <div class="base">
+                    <span></span>
+                    <div class="face"></div>
+                </div>
+                <div class="longfazers">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <h1>Loading..</h1>
+
+        </div>
+        <script src="js/vue.js"></script>
+        <script src="js/vue-scrollto.js"></script>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/app.js"></script>
+        <script>
+            window.onload = function (){
+                var loader = document.getElementsByClassName('loader')[0];
+                loader.setAttribute('style', 'animation-name:hideLoader');
+                loader.addEventListener('webkitAnimationEnd',function( event ) { loader.style.display = 'none'; }, false);
+            }
+        </script>
+    </body>
+</html>
